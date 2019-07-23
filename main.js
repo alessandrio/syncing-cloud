@@ -15,6 +15,7 @@ define(function (require, exports, module) {
   var _opens = false,
     $panel;
   AppInit.appReady(function () {
+    var _first = w.localStorage.getItem("syncing-first");
     var _syncing = false,
       _file,
       _dir,
@@ -59,6 +60,9 @@ define(function (require, exports, module) {
       "id": "synceditfile.syncingpanel",
       "class": "syncingpanel",
     }).html(require('text!panel.html')), 121);
+    if (!_first) {
+      $(".syncing-starting").addClass("syncing-starting-show");
+    }
     $(".syncing-dir").on("change", function () {
       var _thisval = $(this).val();
       if (_thisval.substr(_thisval.length - 1) != "/") {
@@ -75,7 +79,7 @@ define(function (require, exports, module) {
       }
       w.localStorage.setItem("syncingup", _thisval);
     });
-    $(".syncing-panelbtn").on("click", function () {
+    $(".syncing-sync").on("click", function () {
       var _dir = $(".syncing-dir").val();
       var _up = $(".syncing-upbackend").val();
       if (!_dir) {
@@ -85,8 +89,8 @@ define(function (require, exports, module) {
       } else {
         currentfile();
         DocumentManager.getDocumentText(_file).done(function (text) {
-          $(".syncing-panelbtn").attr("disabled", true);
-          $("#syncing-status").addClass("syncing-grey").text("syncing...");
+          $(".syncing-sync").attr("disabled", true);
+          $("#syncing-status").removeClass("syncing-blue syncing-red").addClass("syncing-grey").text("syncing...");
           var _data = JSON.stringify({
             datable: text,
             way: _dir + _file.name,
@@ -112,15 +116,19 @@ define(function (require, exports, module) {
               } else {
                 $("#syncing-status").addClass("syncing-red").text("syncing failed!");
               }
-              $(".syncing-panelbtn").removeAttr("disabled");
+              $(".syncing-sync").removeAttr("disabled");
             })
             .fail(function (jqXHR, status, errorThrown) {
-              $("#syncing-status").addClass("syncing.blue").text("syncing failed!");
-              $(".syncing-panelbtn").removeAttr("disabled");
+              $("#syncing-status").addClass("syncing.red").text("syncing failed!");
+              $(".syncing-sync").removeAttr("disabled");
               console.log(jqXHR.responseText + " : " + status + " : " + errorThrown);
             });
         });
       }
+    });
+    $(".syncing-goit").on("click", function () {
+      w.localStorage.setItem("syncing-first", "syncing");
+      $(".syncing-starting").removeClass("syncing-starting-show");
     });
   });
 });
