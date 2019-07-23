@@ -4,11 +4,11 @@
     "url": "https://github.com/alessandrio/"
   },
   "categories": ["general", "sync", "server", "ftp", "upload", "cloud"],
-  "description": "Synchronize the edition of your document directly to your server without the need for an ftp or similar user, as you do locally and without third parties.",
+  "description": "Synchronize the edition of your document (if it does not exist it will be created) directly to your server without the need for an ftp or similar user, as you do locally and without third parties.",
   "engines": {
-    "brackets": ">=5.0.0"
+    "brackets": ">=1.10"
   },
-  "files": ["cloud-blue.svg", "cloud-grey.svg", "main.js", "package.json", "panel.html", "simple.css", "README.md"],
+  "files": ["main.js", "package.json", "panel.html", "simple.css", "README.md"],
   "homepage": "https://github.com/alessandrio/syncing-brackets/",
   "keywords": ["avril", "move", "copy", "directory", "manage", "improve", "sync", "syncing", "server", "ftp", "edit", "upload", "uploader", "hosting", "cloud", "change", "sftp", "file"],
   "license": "Apache 2.0",
@@ -17,6 +17,6 @@
     "type": "git",
     "url": "https://github.com/alessandrio/syncing-brackets.git"
   },
-  "title": "Syncing",
-  "version": "1.0.0"
+  "title": "Syncing Cloud",
+  "version": "1.0.1"
 }
