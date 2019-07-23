@@ -1,3 +1,4 @@
+//Alessandrio
 /*jslint white, this, long, single*/
 /*global define, window, brackets, console, $*/
 define(function (require, exports, module) {
@@ -5,21 +6,32 @@ define(function (require, exports, module) {
   var w = window,
     d = w.document,
     AppInit = brackets.getModule("utils/AppInit"),
+    NativeApp = brackets.getModule(("utils/NativeApp")),
     StatusBar = brackets.getModule("widgets/StatusBar"),
     DocumentManager = brackets.getModule("document/DocumentManager"),
     EditorManager = brackets.getModule("editor/EditorManager"),
     WorkspaceManager = brackets.getModule("view/WorkspaceManager"),
     StringUtils = brackets.getModule("utils/StringUtils"),
+    PreferencesManager = brackets.getModule("preferences/PreferencesManager"),
+    prefs = PreferencesManager.getExtensionPrefs("syncing"),
     ExtensionUtils = brackets.getModule("utils/ExtensionUtils");
   ExtensionUtils.loadStyleSheet(module, "simple.css");
   var _opens = false,
     $panel;
+  PreferencesManager.definePreference("syncing-uploadableurl", "boolean", !1, {
+    description: "The path of the file on the server with which it will be synchronized."
+  }).on("change", function () {
+    var _up = prefs.get("uploadableurl");
+    if (_up && _up.substr(_up.length - 1) != "/") {
+      prefs.set("uploadableurl", _up + "/");
+      prefs.save();
+    }
+  });
   AppInit.appReady(function () {
-    var _first = w.localStorage.getItem("syncing-first");
     var _syncing = false,
       _file,
       _dir,
-      _up,
+      _up = prefs.get("uploadableurl"),
       params = function (obj) {
         var _obj = "",
           i;
@@ -37,8 +49,6 @@ define(function (require, exports, module) {
           $(".syncing-path").val(_file.fullPath);
           _dir = w.localStorage.getItem("syncingdir");
           $(".syncing-dir").val(_dir);
-          _up = w.localStorage.getItem("syncingup");
-          $(".syncing-upbackend").val(_up);
         } catch (err) {
           $("#syncing-status").text("non file");
         }
@@ -59,8 +69,9 @@ define(function (require, exports, module) {
     $panel = WorkspaceManager.createBottomPanel("synceditfile.syncingpanel", $(d.createElement("div")).attr({
       "id": "synceditfile.syncingpanel",
       "class": "syncingpanel",
-    }).html(require('text!panel.html')), 121);
-    if (!_first) {
+    }).html(require('text!panel.html')), 153);
+    if (!_up || _up == "") {
+      $panel.show();
       $(".syncing-starting").addClass("syncing-starting-show");
     }
     $(".syncing-dir").on("change", function () {
@@ -77,15 +88,13 @@ define(function (require, exports, module) {
         _thisval += "/";
         $(this).val(_thisval);
       }
-      w.localStorage.setItem("syncingup", _thisval);
+      prefs.set("uploadableurl", _thisval);
+      prefs.save();
     });
     $(".syncing-sync").on("click", function () {
       var _dir = $(".syncing-dir").val();
-      var _up = $(".syncing-upbackend").val();
       if (!_dir) {
         $(".syncing-dir").focus();
-      } else if (!_up) {
-        $(".syncing-upbackend").focus();
       } else {
         currentfile();
         DocumentManager.getDocumentText(_file).done(function (text) {
@@ -126,9 +135,26 @@ define(function (require, exports, module) {
         });
       }
     });
+    var _github = false;
+    $(".syncing-settings").on("click", function (e) {
+      $(".syncing-starting").addClass("syncing-starting-show");
+      $(".syncing-upbackend").val(_up);
+      _github = true;
+    });
+    $(".syncing-github").on("click", function (e) {
+      _github = true;
+    });
     $(".syncing-goit").on("click", function () {
-      w.localStorage.setItem("syncing-first", "syncing");
-      $(".syncing-starting").removeClass("syncing-starting-show");
+      var _up = $(".syncing-upbackend").val();
+      if (!_up || _up == "") {
+        $(".syncing-upbackend").focus();
+      } else {
+        $(".syncing-starting").removeClass("syncing-starting-show");
+        currentfile();
+      }
+      if (!_github) {
+        NativeApp.openURLInDefaultBrowser("https://github.com/alessandrio/syncing-brackets");
+      }
     });
   });
 });
