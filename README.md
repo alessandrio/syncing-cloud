@@ -8,9 +8,29 @@ After installing the extension in the editor, it is important to add a file insi
 
 ### Prerequisites
 
- - inside any folder of our directory in the server we will create a file with the name `index.php` -> (php 7.3.7)
+ - inside any folder of our directory in the server we will create a file with the name `index.[py,php]`
  - in which we will add the following code:
  ```
+ PYTHON2.5+
+ 
+#!/usr/bin/python
+import cgi
+import json
+print "Content-type: text/html\n"
+form = cgi.FieldStorage()
+tojson = json.loads(str(form.getvalue('file')))
+todict = json.loads(tojson);
+datable = todict['datable']
+way = todict['way']
+try:
+  with open(way, 'w') as file:
+    file.write(datable)
+    print('1')
+except IOError as e:
+    print('0')
+ 
+ PHP7+
+ 
   $str = file_get_contents($_FILES["file"]["tmp_name"]);
   $tojson = json_decode(rtrim($str, "\0"), true);
   $obj = json_decode($tojson);
