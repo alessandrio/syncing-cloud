@@ -1,4 +1,4 @@
-# Syncing (v1.0.0)
+# Syncing (v1.0.1)
 
 Synchronize the edition of your document (if it does not exist it will be created) directly to your server without the need for an ftp or similar user, as you do locally and without third parties.
 
@@ -53,7 +53,7 @@ except IOError as e:
  - when it turns blue it's time for excitement :)
 ![synced](https://github.com/alessandrio/syncing-brackets/raw/master/ss/synced.png)
 
-### screenshot
+## screenshot
 
 ![syncing screenshoot](https://github.com/alessandrio/syncing-brackets/blob/master/ss/syncing.png?raw=true?raw=true "Syncing screenshoot")
 
