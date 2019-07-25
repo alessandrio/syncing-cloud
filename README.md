@@ -10,9 +10,8 @@ After installing the extension in the editor, it is important to add a file insi
 
  - inside any folder of our directory in the server we will create a file with the name `index.[py,php]`
  - in which we will add the following code:
- ```
- PYTHON2.5+
- 
+ ###### PYTHON2.5+
+ ```python
 #!/usr/bin/python
 import cgi
 import json
@@ -28,9 +27,9 @@ try:
     print('1')
 except IOError as e:
     print('0')
- 
- PHP7+
- 
+```
+###### PHP7+
+```php
   $str = file_get_contents($_FILES["file"]["tmp_name"]);
   $tojson = json_decode(rtrim($str, "\0"), true);
   $obj = json_decode($tojson);
