@@ -52,6 +52,15 @@ After installing the extension in the editor, it is important to add a file insi
 
 ![syncing screenshoot](https://github.com/alessandrio/syncing-cloud/raw/master/ss/atom-screenshot.png?raw=true)
 
+### Installation
+|     <>    |                                                                   |
+|-----------|-------------------------------------------------------------------|
+|  brackets | https://s3.amazonaws.com/extend.brackets/brackets-syncing/brackets-syncing-1.0.2.zip
+|           | File ➔ Extension Manager ➔ Search for -Syncing Cloud- or DragAndDrop download previous
+|  atom     | https://atom.io/packages/syncing-cloud or atom://settings-view/show-package?package=syncing-cloud
+|           | ```apm install syncing-cloud```
+|           | Settings/Preferences ➔ Install ➔ Search for syncing-cloud
+
 ## Contribution
  - [Issues](https://github.com/alessandrio/syncing-cloud/issues) & Pull Request.
 
