@@ -19,16 +19,16 @@ After installing the extension in the editor, it is important to add a file insi
  form = cgi.FieldStorage()
  todict = json.loads(form.getvalue('file'))
  try:
+   print("1")
    with open(todict['way'], 'w') as file:
      file.write(todict['datable'])
-     print("1")
  except IOError as e:
      print("0")
 ```
 ###### PHP7+
 ```php
   $str = file_get_contents($_FILES["file"]["tmp_name"]);
-  $tojson = json_decode(rtrim($str, "\0"));
+  $tojson = json_decode($str);
   echo (file_put_contents($tojson->way, $tojson->datable) !== false) ? 1 : 0;
  ```
  - copy the final url of the created file e.g. (`https://[mywebsite.cloud]/up/`) and put it in the extension settings in the editor.
