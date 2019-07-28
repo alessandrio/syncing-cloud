@@ -1,0 +1,82 @@
+// The ui-variables file is provided by base themes provided by Atom.
+//
+// See https://github.com/atom/atom-dark-ui/blob/master/styles/ui-variables.less
+// for a full listing of what's available.
+@import "ui-variables";
+@font_family_1: var(--editor-font-family);
+
+.syncing-statusbar-open {
+	/*-about-release-notes#0f82e6*/
+	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAMCAYAAACNzvbFAAABwElEQVQoU5WSPWiTYRSFn5MYhwYtWotQQxJFQRQcdFEQHBw7W9FB1EGhU5pBEKRmqVCQpMFBoxXBRVBndVYUQbciLlJjKFJLFEO1EdovR76QQhISpe947z3Pe+6P6PFGSh6IrTAOnAH2A6uYD4rwsDzCLGMKeunWY+pO7ik6GQQ8RxzoKRRvgwajC1n96AfugB4pOVZd4T1w6D9O5oCfhlD/IjD5hazqPZ2mCz5veNABNJ+Bm4L5hhiWGMccba8xvKzUOElOa2G8w2m64MeGU8BvxF2ZvWvmdEQcljnhCO8wg4In3Z1YjFUyasab0ETR+6LmMuYcMAzUA5PYGWf5e40hx5gFRlug0M08sK1Vu86f+jKha01oquBj4VyAre2/y2TLWRUO5rx5eZCMYBp4apipTOh1suDrglybpmq4V6kxGUJfAcd7LOaTzDOLs8COVv6WVrlRvqLFRN67oqIMbOrS5kPoLyDeb9sWdyINlhBhR2+GBpiq1smowZzFfWCkS7uk1Iw/4uaB93u3IwHT27fw9dsf0lFzFXOhb7VYVLLgS4LSv+5yI7lw9sJWqshFQgewG4hsBNJWWxE8iteY/AshJpvbmoTK3wAAAABJRU5ErkJggg==");
+}
+.syncing-icon-cloud,
+.syncing-statusbar-close{
+	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAMCAYAAACNzvbFAAAB6UlEQVQoU42SQUiTcRjGf8+3b4P0y5CU0CIKCqJDh04JQUiXaF77opRIGQWepJsQ5sVACAs61MpNFGawuk3Lc1EEeZPoEhYV5SQqaipM972xtWAbs/wfn/d9fv/n5X1FnRePZxpCnvoF54BDwDrGa3M01eSujPu+X6jn+6upthifyux1Q3oCHK5nFPYyCIejMf/Ut83AVdB4fD7setl5sCP/SgIsmPghQxJznrs65vv+Wt2kidTsRbCJGuA7EzdAixitDkG/oWM1PU8/tjeeHO7s3CjqVUmTqZm0wRlgxeCegw544ZWzP/PeUSk4EUivQkGww6SHtZMY+LHurpJegk6kMgcD6TLGBaAVWLOwu6fwveVXpDm7M8jbOCJaBhXTLALN5d6SbMZIrKfragmamM50YJoDmip/F7rS1x29mU6nI7n8tgGTRhGPLHBuxXpOP0+kZq+BDVd4vpp0/1Nbw5ASqZlnwPE6i3kL9hh0Hmj5E4fbTkTXe/3o0uRkZveGq/eAW+3VWBGaAxo337bumtmyIzoMe7GRaxtxt2cHDBZklgDaq722XIS+KR94Xa7BHdBoIbfrc8T7si/AGQTr3TSEsaRkauaSQfw/d7nlsmBUZqbk9GyfwaBgP+BsmVDRKPgAPPDCq0O/AVg6sNC1x8OWAAAAAElFTkSuQmCC");
+}
+.syncing-icon-cloud,
+.syncing-statusbar {
+	background-repeat: no-repeat;
+	background-position: center;
+	min-width: 29px;
+}
+.syncing-novalid atom-text-editor[mini].is-focused {
+	border-color: #ff6347;
+	box-shadow: 0 0 0 1px #ff6347;
+	background-color: #312426;
+}
+.syncing-navbar {
+	span {
+		padding-left: 12px;
+	}
+	padding: 5px 0 6px;
+}
+.syncing-status {
+	margin: 0 5px;
+	position: relative;
+	top: -2px;
+}
+.syncing-btn,
+.syncing-status {
+	padding: 0 71px !important;
+}
+.syncing-box {
+	padding: 5px 21px;
+}
+.syncing-input {
+	&:disabled {
+		opacity: 0.7;
+		border: none;
+	}
+	font-family: @font_family_1;
+	width: 100%;
+	-webkit-appearance: none;
+	font-size: 1.15em;
+	padding-left: 0.5em;
+	border-radius: 3px;
+	border: 1px solid #181a1f;
+	margin-bottom: 4px;
+}
+.syncing-path {
+	background: rgba(0, 0, 0, 0.1);
+}
+.syncing-sync {
+	margin-left: 50%;
+	transform: translate(-50%, 0);
+	margin-top: 4px;
+}
+.syncing-sync-disabled {
+  opacity: .5;
+	pointer-events: none;
+}
+.syncing-status {
+	pointer-events: none;
+}
+.syncing-starting{
+		text-align: center;
+}
+.syncing-startingbox {
+	padding: 7px 0;
+}
+.syncing-left {
+	text-align: left;
+}
