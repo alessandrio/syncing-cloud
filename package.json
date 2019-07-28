@@ -1,42 +1,37 @@
 {
-  "name": "syncing-cloud",
-  "main": "./lib/syncing.js",
-  "version": "1.0.0",
-  "description": "Synchronize the edition of your file (if it does not exist it will be created) directly to your server without the need for an ftp or similar user, as you do locally and without third parties.",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/alessandrio/syncing-cloud/"
-  },
-  "license": "Apache 2.0",
-  "engines": {
-    "atom": ">=1.21.0 <2.0.0"
-  },
-  "providedServices": {
-    "status-bar": {
-      "description": "A container for indicators at the bottom of the workspace",
-      "versions": {
-        "1.1.0": "provideStatusBar",
-        "0.58.0": "legacyProvideStatusBar"
-      }
-    }
-  },
-  "keywords": [
-    "move", "copy", "directory", "manage", "improve", "sync",
-    "syncing", "server", "ftp", "edit", "upload", "uploader", "hosting", "cloud", "change", "sftp", "file"
-  ],
-  "bugs": {
-    "url": "https://github.com/alessandrio/syncing-cloud/issues"
-  },
-  "packageDependencies": {
-    "settings-view": "0.232.5",
-    "status-bar": "1.1.0"
-  },
-  "configSchema": {
-    "syncing": {
-      "title": "URL of the file on your cloud server.",
-      "type": "string",
-      "default": "https://[url]",
-      "description":  "It is necessary to add a file on your server and puth the URL here. This file will do the synchronization. <a href='https://github.com/alessandrio/syncing-cloud' class='syncing-github'>Read how to do it</a>"
-    }
-  }
+    "author": "Alessandrio",
+    "bugs": {
+        "url": "https://github.com/alessandrio/syncing-cloud/issues"
+    },
+    "configSchema": {
+        "syncing": {
+            "default": "https://[url]",
+            "description": "It is necessary to add a file on your server and puth the URL here. This file will do the synchronization. <a href='https://github.com/alessandrio/syncing-cloud' class='syncing-github'>Read how to do it</a>",
+            "title": "URL of the file on your cloud server.",
+            "type": "string"
+        }
+    },
+    "description": "Synchronize the edition of your file (if it does not exist it will be created) directly to your server without the need for an ftp or similar user, as you do locally and without third parties.",
+    "engines": {
+        "atom": ">=1.21.0 <2.0.0"
+    },
+    "keywords": ["change", "cloud", "copy", "directory", "edit", "file", "ftp", "hosting", "improve", "manage", "move", "server", "sftp", "sync", "syncing", "upload", "uploader"],
+    "license": "Apache 2.0",
+    "main": "./lib/syncing.js",
+    "name": "syncing-cloud",
+    "packageDependencies": {
+        "settings-view": "0.232.5",
+        "status-bar": "1.1.0"
+    },
+    "providedServices": {
+        "status-bar": {
+            "description": "A container for indicators at the bottom of the workspace",
+            "versions": {
+                "0.58.0": "legacyProvideStatusBar",
+                "1.1.0": "provideStatusBar"
+            }
+        }
+    },
+    "repository": "https://github.com/alessandrio/syncing-cloud",
+    "version": "1.0.0"
 }
