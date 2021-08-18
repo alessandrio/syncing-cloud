@@ -27,19 +27,19 @@ After installing the extension in the editor, it is important to add a file insi
 ```
 ###### PHP7+
 ```php
-  $str = file_get_contents($_FILES["file"]["tmp_name"]);
-  $tojson = json_decode($str);
-  $path = str_replace($tojson->root, '', $tojson->way);
-  $folders = explode("/", $path);
-  array_pop($folders);
-  $createdfolder = "";
-  foreach ($folders as $folder) {
-    $createdfolder.=$folder."/";
-    if(!file_exists($tojson->root.$createdfolder)){
-      mkdir($tojson->root.$createdfolder, 0777, true);
-    }
-  }
-  echo (file_put_contents($tojson->way, $tojson->datable) !== false) ? 1 : 0;
+ $str = file_get_contents($_FILES["file"]["tmp_name"]);
+ $tojson = json_decode($str);
+ $path = str_replace($tojson->root, '', $tojson->way);
+ $folders = explode("/", $path);
+ array_pop($folders);
+ $createdfolder = "";
+ foreach ($folders as $folder) {
+   $createdfolder.=$folder."/";
+   if(!file_exists($tojson->root.$createdfolder)){
+     mkdir($tojson->root.$createdfolder, 0777, true);
+   }
+ }
+ echo (file_put_contents($tojson->way, $tojson->datable) !== false) ? 1 : 0;
  ```
  - copy the final url of the created file e.g. (`https://[mywebsite.cloud]/up/`) and put it in the extension settings in the editor.
 
