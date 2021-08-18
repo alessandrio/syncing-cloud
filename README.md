@@ -29,24 +29,35 @@ After installing the extension in the editor, it is important to add a file insi
 ```php
   $str = file_get_contents($_FILES["file"]["tmp_name"]);
   $tojson = json_decode($str);
+  $path = str_replace($tojson->root, '', $tojson->way);
+  $folders = explode("/", $path);
+  array_pop($folders);
+  $createdfolder = "";
+  foreach ($folders as $folder) {
+    $createdfolder.=$folder."/";
+    if(!file_exists($tojson->root.$createdfolder)){
+      mkdir($tojson->root.$createdfolder, 0777, true);
+    }
+  }
   echo (file_put_contents($tojson->way, $tojson->datable) !== false) ? 1 : 0;
  ```
  - copy the final url of the created file e.g. (`https://[mywebsite.cloud]/up/`) and put it in the extension settings in the editor.
-![dir](https://github.com/alessandrio/syncing-cloud/raw/master/ss/atom/backend.png?raw=true)
+
+![dir](https://github.com/alessandrio/syncing-cloud/blob/master/ss/vs/3.jpg?raw=true)
 
 ### Settings
 
-![settings](https://github.com/alessandrio/syncing-cloud/raw/master/ss/atom/cloudpath.png?raw=true)
  - write the path of the folder on the server with which it will be synchronized e.g. (`/home/[cloudserver]/public_html/`), the file name will automatically be taken from the editor.
+
+![settings](https://github.com/alessandrio/syncing-cloud/blob/master/ss/vs/4.png?raw=true)
 
 ### Run
 
  - the extension will be shown by pressing the cloud button located in the status bar of the editor.
-![statusbar](https://github.com/alessandrio/syncing-cloud/raw/master/ss/atom/statusbar.png?raw=true)
+![statusbar](https://github.com/alessandrio/syncing-cloud/blob/master/ss/vs/1.png?raw=true)
  - once configured the extension it is time to press the button for the function.
-![button](https://github.com/alessandrio/syncing-cloud/raw/master/ss/atom/button.png?raw=true)
  - when it turns blue it's time for excitement :)
-![synced](https://github.com/alessandrio/syncing-cloud/raw/master/ss/atom/synced.png?raw=true)
+![synced](https://github.com/alessandrio/syncing-cloud/blob/master/ss/vs/5.png?raw=true)
 
 ## screenshot
 
@@ -55,6 +66,8 @@ After installing the extension in the editor, it is important to add a file insi
 ### Installation
 |     <>    |                                                                   |
 |-----------|-------------------------------------------------------------------|
+|  VS Code  | https://marketplace.visualstudio.com/items?itemName=Alessandrio.syncing-cloud
+|           | Extension ➔ Search for -Syncing Cloud
 |  brackets | https://s3.amazonaws.com/extend.brackets/brackets-syncing/brackets-syncing-1.0.2.zip
 |           | File ➔ Extension Manager ➔ Search for -Syncing Cloud- or DragAndDrop download previous
 |  atom     | https://atom.io/packages/syncing-cloud or atom://settings-view/show-package?package=syncing-cloud
@@ -72,5 +85,5 @@ After installing the extension in the editor, it is important to add a file insi
 
 This project is licensed under the Apache License - see the [LICENSE](https://github.com/alessandrio/syncing-cloud/blob/master/LICENSE) file for details.
  ```
- by: Alessandrio >> s1dg78hg4df85h1
+ by: Alessandrio >> sdevgfrbg6d5f26nb2
  ```
