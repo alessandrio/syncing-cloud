@@ -1,55 +1,80 @@
 {
-    "author": "Alessandrio",
-    "bugs": {
-        "url": "https://github.com/alessandrio/syncing-cloud/issues"
-    },
-    "configSchema": {
-        "syncing": {
-            "default": "https://[url]",
-            "description": "It is necessary to add a file on your server and puth the URL here. This file will do the synchronization. <a href='https://github.com/alessandrio/syncing-cloud' class='syncing-github'>Read how to do it</a>",
-            "title": "URL of the file on your cloud server.",
-            "type": "string"
-        }
-    },
-    "description": "Synchronize the edition of your file (if it does not exist it will be created) directly to your server without the need for an ftp or similar user, as you do locally and without third parties.",
-    "engines": {
-        "atom": ">=1.21.0 <2.0.0"
-    },
-    "keywords": [
-        "change",
-        "cloud",
-        "copy",
-        "directory",
-        "edit",
-        "file",
-        "ftp",
-        "hosting",
-        "improve",
-        "manage",
-        "move",
-        "server",
-        "sftp",
-        "sync",
-        "syncing",
-        "upload",
-        "uploader"
-    ],
-    "license": "Apache 2.0",
-    "main": "./lib/syncing.js",
-    "name": "syncing-cloud",
-    "packageDependencies": {
-        "settings-view": "0.232.5",
-        "status-bar": "1.1.0"
-    },
-    "providedServices": {
-        "status-bar": {
-            "description": "A container for indicators at the bottom of the workspace",
-            "versions": {
-                "0.58.0": "legacyProvideStatusBar",
-                "1.1.0": "provideStatusBar"
-            }
-        }
-    },
-    "repository": "https://github.com/alessandrio/syncing-cloud",
-    "version": "1.0.2"
+	"name": "syncing-cloud",
+	"displayName": "Syncing Cloud",
+	"description": "Synchronize the edition of your document (if it does not exist it will be created) directly to your server without the need for an ftp or similar user, as you do locally and without third parties.",
+	"icon": "syncing-blue.png",
+	"version": "1.0.4",
+	"publisher": "Alessandrio",
+	"author": {
+		"name": "Alessandrio"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/alessandrio/syncing-cloud"
+	},
+	"bugs": {
+		"url": "https://github.com/alessandrio/syncing-cloud/issues"
+	},
+	"homepage": "https://github.com/alessandrio/syncing-cloud/blob/master/README.md",
+	"galleryBanner": {
+		"color": "#82adf3",
+		"theme": "light"
+	},
+	"license": "Apache 2.0",
+	"categories": [
+		"Other"
+	],
+	"engines": {
+		"vscode": "^1.32.0"
+	},
+	"activationEvents": [
+		"onFileSystem:file"
+	],
+	"contributes": {
+		"configuration": [
+			{
+				"title": "Syncing Cloud",
+				"properties": {
+					"syncing.scriptserver": {
+						"scope": "application",
+						"type": "string",
+						"default": null,
+						"markdownDescription": "Copy the final URL of the created file on the server e.g. `https://[mywebsite.cloud]/up/`. See the [Syncing docs](https://github.com/alessandrio/syncing-cloud)"
+					},
+					"syncing.upluadpath": {
+						"scope": "application",
+						"type": "string",
+						"default": null,
+						"markdownDescription": "Write the path of the folder on the server with which it will be synchronized e.g. `/home/[cloudserver]/public_html/`"
+					},
+					"syncing.autoclosepanel": {
+						"scope": "application",
+						"type": "boolean",
+						"default": true,
+						"description": "Automatically close modal when file syncs."
+					}
+				}
+			}
+		],
+		"commands": [
+			{
+				"command": "showstatusbariconsyncing",
+				"title": "Syncing Cloud"
+			}
+		],
+		"menus": {
+			"explorer/context": [
+				{
+					"command": "showstatusbariconsyncing",
+					"group": "YourGroup@1",
+					"when": "!explorerResourceIsFolder"
+				}
+			]
+		}
+	},
+	"extensions.loadOrder": [
+		"whatever"
+	],
+	"main": "./extension.js",
+	"scripts": {}
 }
