@@ -12,18 +12,22 @@ After installing the extension in the editor, it is important to add a file insi
  - in which we will add the following code:
  ###### PYTHON2.5+
  ```python
- #!/usr/bin/python
- import cgi
- import json
- print "Content-type: text/html\n"
- form = cgi.FieldStorage()
- todict = json.loads(form.getvalue('file'))
- try:
-   print("1")
-   with open(todict['way'], 'w') as file:
-     file.write(todict['datable'])
- except IOError as e:
-     print("0")
+#!/usr/bin/python
+import cgi
+import os
+print("Content-Type: text/html\n")
+form = cgi.FieldStorage()
+path = form.getvalue('root')+form.getvalue('path')
+full = path+form.getvalue('name')
+try:
+  print("1")
+  if os.path.isdir(path) == False:
+    os.makedirs(path)
+  with open(full, 'w') as file:
+    file.write(form.getvalue('file').decode("utf-8"))
+    file.close()
+except IOError as e:
+  print("0")
 ```
 ###### PHP7+
 ```php
