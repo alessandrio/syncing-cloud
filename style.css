@@ -1,0 +1,172 @@
+/*
+Alessandrio code ~sdevgfrbg6d5f26nb2
+*/
+
+* {
+  box-sizing: border-box;
+  user-select: none;
+}
+
+body {
+  margin: 0;
+}
+
+::-webkit-input-placeholder {
+  color: inherit;
+  opacity: 0.54
+}
+
+.syncingbox {
+  margin-top: 13px;
+}
+
+textarea {
+  display: none !important;
+}
+
+.filepath,
+button,
+input[type=text] {
+  padding: 5px;
+  -webkit-appearance: none;
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  color: rgb(40, 40, 40);
+  border: 1px solid rgb(217, 215, 213);
+  margin: 2px 0;
+}
+
+input[type=checkbox] {
+  position: relative;
+  vertical-align: middle;
+  padding: 0;
+  -webkit-appearance: none;
+  height: 21px;
+  width: 21px;
+  background-color: rgb(255, 255, 255);
+  color: rgb(40, 40, 40);
+  border: 1px solid rgb(217, 215, 213);
+  margin: 4px 0;
+}
+
+
+input[type=checkbox]:before,
+input[type=checkbox]:after {
+  content: "";
+  height: 2px;
+  transform-origin: 0% 0%;
+  position: absolute;
+  background: rgb(217, 215, 213);
+  display: none;
+}
+
+input[type=checkbox]:before {
+  transform: rotate(45deg);
+  top: 10px;
+  left: 6px;
+  width: 5px;
+}
+
+input[type=checkbox]:after {
+  transform: rotate(305deg);
+  top: 13px;
+  left: 8px;
+  width: 10px;
+}
+
+input[type=checkbox]:checked:before,
+input[type=checkbox]:checked:after {
+  display: block;
+}
+
+input[type=checkbox]:focus:checked:before,
+input[type=checkbox]:focus:checked:after {
+  background: #82adf3;
+}
+
+.filepath {
+  border-color: transparent;
+}
+
+span {
+  border-color: transparent;
+  margin-left: 5px;
+}
+
+input:focus {
+  outline: 1px solid #82adf3;
+  outline-offset: -1px;
+}
+
+button:hover {
+  cursor: pointer;
+  background: rgba(184, 184, 184, 0.31);
+}
+
+.syncing-cloud {
+  pointer-events: none;
+  background: #0F82E6;
+  color: white;
+}
+
+.syncing-synced {
+  background: #73c990;
+}
+
+.syncing-error {
+  background: #e69595;
+}
+
+.loader {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  background: #fff;
+  border-radius: 7px;
+  display: inline-block;
+  margin-left: 2px;
+  animation: slide 1.4s cubic-bezier(.17, .67, .83, .67) infinite;
+}
+
+.dot:nth-child(1) {
+  animation-delay: -0.072s;
+}
+
+.dot:nth-child(2) {
+  animation-delay: -0.108s;
+}
+
+.dot:nth-child(3) {
+  animation-delay: -0.144s;
+}
+
+.dot:nth-child(4) {
+  animation-delay: -0.18s;
+}
+
+.dot:nth-child(5) {
+  animation-delay: -0.216s;
+}
+
+@keyframes slide {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.15;
+    transform: scale(2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+/*
+Alessandrio code ~sdevgfrbg6d5f26nb2
+*/
