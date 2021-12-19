@@ -15,6 +15,7 @@ After installing the extension in the editor, it is important to add a file insi
 #!/usr/bin/python
 import cgi
 import os
+from urllib.parse import unquote
 print("Content-Type: text/html\n")
 form = cgi.FieldStorage()
 path = form.getvalue('root')+form.getvalue('path')
@@ -24,7 +25,9 @@ try:
   if os.path.isdir(path) == False:
     os.makedirs(path)
   with open(full, 'w') as file:
-    file.write(form.getvalue('file').decode("utf-8"))
+    file.write(unquote(form.getvalue('plain')).decode("utf-8"))
+    #not visual studio code ->
+    #file.write(form.getvalue('file').decode("utf-8"))
     file.close()
 except IOError as e:
   print("0")
@@ -44,7 +47,9 @@ if(file_exists($path)){
   chmod($path,0755); 
   unlink($path);
 }
-echo (move_uploaded_file($_FILES["file"]["tmp_name"], $path) !== false) ? 1 : 0;
+echo file_put_contents($path, urldecode($_POST['plain'])) ? 1 : 0;
+//not visual studio code ->
+//echo (move_uploaded_file($_FILES["file"]["tmp_name"], $path) !== false) ? 1 : 0;
  ```
  - copy the final url of the created file e.g. (`https://[mywebsite.cloud]/up/`) and put it in the extension settings in the editor.
 
